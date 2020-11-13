@@ -3,6 +3,10 @@ CFLAGS=-ggdb -O3 -Wall
 OBJS=vanitygen.o oclvanitygen.o oclvanityminer.o oclengine.o keyconv.o pattern.o util.o
 PROGS=vanitygen keyconv oclvanitygen oclvanityminer
 
+# ArchLinux and GentooLinux only
+LIBS=-L/usr/lib/openssl-1.0 -lpcre -lcrypto -lm -lpthread
+CFLAGS=-ggdb -O3 -Wall -I/usr/include/openssl-1.0
+
 PLATFORM=$(shell uname -s)
 ifeq ($(PLATFORM),Darwin)
 OPENCL_LIBS=-framework OpenCL
